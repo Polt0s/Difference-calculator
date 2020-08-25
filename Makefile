@@ -1,4 +1,4 @@
-nstall:
+install:
 	npm install
 
 publish:
