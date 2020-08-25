@@ -17,9 +17,11 @@ program.action((filepath1, filepath2) => {
 })
 program.parse(process.argv);
 
-const test = (a, b) => {
+const probaTest = (a, b) => {
   return a * b;
 }
+
+export default probaTest;
 
 
 

@@ -17,6 +17,9 @@
     "url": "https://github.com/Polt0s/frontend-project-lvl2/issues"
   },
   "homepage": "https://github.com/Polt0s/frontend-project-lvl2#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "commander": "^6.0.0",
     "lodash": "^4.17.20",
