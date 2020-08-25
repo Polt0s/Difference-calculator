@@ -24,6 +24,8 @@ const getNewTree = (obj) => {
       case 'changed':
         return [`-${key}: ${convertToString(oldValue)}`,
         `+ ${key}:${convertToString(newValue)}`];
+      case 'modified':
+        return `${key}: ${getNewTree(convertToString(value))}`;
       default:
         return `wrong data type - ${type}`;
     }

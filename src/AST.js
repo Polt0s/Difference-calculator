@@ -22,6 +22,9 @@ const getFileComparisons = (object1, object2) => {
     if (fileParse1[key] === fileParse2[key]) {
       return { key, type: 'unchanged', value: fileParse1[key] };
     }
+    if (_.isPlainObject(fileParse1[key]) && _.isPlainObject(fileParse2[key])) {
+      return { key, type: 'modified', value: getFileComparisons(fileParse1[key], fileParse2[key]) }
+    }
     return { key, type: 'changed', value1: fileParse1[key], value2: fileParse2[key] };
   })
   return compare;
