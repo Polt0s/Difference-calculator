@@ -16,12 +16,3 @@ program.action((filepath1, filepath2) => {
   console.log(proba)
 })
 program.parse(process.argv);
-
-const probaTest = (a, b) => {
-  return a * b;
-}
-
-export default probaTest;
-
-
-

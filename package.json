@@ -5,7 +5,7 @@
   "type": "module",
   "main": "bin/main.js",
   "scripts": {
-    "test": "jest"
+    "test": "npx -n --experimental-vm-modules node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Polt0s/frontend-project-lvl2#readme",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {}
   },
   "dependencies": {
     "commander": "^6.0.0",
