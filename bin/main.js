@@ -17,7 +17,9 @@ program.action((filepath1, filepath2) => {
 })
 program.parse(process.argv);
 
-
+const test = (a, b) => {
+  return a * b;
+}
 
 
 
