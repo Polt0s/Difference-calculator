@@ -1,6 +1,11 @@
 import program from 'commander';
 import genDiff from '../src/gendiff.js'
 
+const probaTest = (a, b) => {
+  return a * b;
+}
+
+export default probaTest;
 
 // program.version('0.0.1')
 // program.description('Compares two configuration files and shows a difference.')
@@ -16,12 +21,3 @@ import genDiff from '../src/gendiff.js'
 //   console.log(proba)
 // })
 // program.parse(process.argv);
-
-const probaTest = (a, b) => {
-  return a * b;
-}
-
-export default probaTest;
-
-
-
