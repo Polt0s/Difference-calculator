@@ -13,9 +13,8 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 const formats = [
   ['json', 'json']
   ['yaml', 'yaml']
+  ['ini', 'ini']
 ];
-
-// const output = genDiff(filepath1, filepath2, format);
 
 test.each(formats)('genDiff', (formatFile, formatResult) => {
   const firstFile = getFixturePath(`filepath1.${formatFile}`)
