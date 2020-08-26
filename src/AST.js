@@ -29,7 +29,7 @@ const getFileComparisons = (object1, object2) => {
       key,
       type: 'changed',
       value1: fileParse1[key],
-      value2: fileParse2[key]
+      value2: fileParse2[key],
     };
   });
   return compare;
