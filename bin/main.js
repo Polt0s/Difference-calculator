@@ -12,7 +12,7 @@ if (typeof filepath1Value !== 'undefined' || typeof filepath2Value !== 'undefine
   process.exit(1);
 }
 program.action((filepath1, filepath2) => {
-  const proba = genDiff(filepath1, filepath2, program.format);
-  console.log(proba)
+  const output = genDiff(filepath1, filepath2, program.format);
+  console.log(output);
 })
 program.parse(process.argv);

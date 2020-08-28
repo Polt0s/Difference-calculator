@@ -1,16 +1,16 @@
 import _ from 'lodash';
-import fs from 'fs';
 import path from 'path';
+import getWay from './readingFile.js';
+
+const getParsingFile = (object) => {
+  const way = getWay(object);
+  const name = path.extname(way);
+  return JSON.parse(way, name);
+};
 
 const getFileComparisons = (object1, object2) => {
-  const fullPath1 = path.resolve(process.cwd(), object1);
-  const fullPath2 = path.resolve(process.cwd(), object2);
-  const fileContents1 = fs.readFileSync(fullPath1, 'utf8');
-  const fileContents2 = fs.readFileSync(fullPath2, 'utf8');
-  const config1 = path.extname(object1);
-  const config2 = path.extname(object2);
-  const fileParse1 = JSON.parse(fileContents1, config1);
-  const fileParse2 = JSON.parse(fileContents2, config2);
+  const fileParse1 = getParsingFile(object1);
+  const fileParse2 = getParsingFile(object2);
   const allKeys = _.union(Object.keys(fileParse1), Object.keys(fileParse2)).sort();
   const compare = allKeys.map((key) => {
     if (!_.has(fileParse1, key)) {
