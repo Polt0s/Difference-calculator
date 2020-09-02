@@ -1,14 +1,14 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const parsers = (format) => {
+const parsers = (config, format) => {
   switch (format) {
-    case 'json':
-      return JSON.parse(format);
-    case 'yaml':
-      return yaml.safeLoad(format);
-    case 'ini':
-      return ini.parse(format);
+    case '.json':
+      return JSON.parse(config);
+    case '.yaml':
+      return yaml.safeLoad(config);
+    case '.ini':
+      return ini.parse(config);
     default:
       return `format ${format} not found.`;
   }

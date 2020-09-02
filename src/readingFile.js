@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const getWay = (object) => {
-  const absolutePath = path.resolve(process.cwd(), object);
+const getWay = (file) => {
+  const absolutePath = path.resolve(process.cwd(), file);
   const fileСontents = fs.readFileSync(absolutePath, 'utf8');
   return fileСontents;
 };
