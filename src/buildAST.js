@@ -1,33 +1,31 @@
 import _ from 'lodash';
 
-const convertToString = (value) => {
+const convertToString = (value, data) => {
   if (!_.isObject(value)) {
     return value;
   };
   const newKeys = Object.keys(value);
   const searchKeys = newKeys.map((key) => `${key}: ${value[key]}`);
-  return searchKeys;
-  // здесь рекурсия и {значения объекта} отоформатироват
+  return `{\n${data}${searchKeys.join(' \n ')}\n${data}  }`;
 };
 
-const getNewTree = (obj) => {
+const getNewTree = (obj, data) => {
   const statusKeys = obj.map((tree) => {
     const {
       key, type, value, oldValue, newValue, children
     } = tree;
     switch (type) {
       case 'added':
-        return `+ ${key}: ${convertToString(value)}`;
+        return `${data}+ ${key}: ${convertToString(value, data)}`;
       case 'delete':
-        return `- ${key}: ${convertToString(value)}`;
+        return `${data}- ${key}: ${convertToString(value, data)}`;
       case 'unchanged':
-        return `  ${key}: ${convertToString(value)}`;
+        return `${data}  ${key}: ${convertToString(value, data)}`;
       case 'changed':
-        return [`- ${key}: ${convertToString(oldValue)}`,
-        `+ ${key}: ${convertToString(newValue)}`];
+        return [`${data}- ${key}: ${convertToString(oldValue, data)}`,
+        `${data}+ ${key}: ${convertToString(newValue, data)}`];
       case 'nested':
-        return `  ${key}: ${convertToString(value), convertToString(value)}`;
-      // здесь рекурсия 
+        return `  ${data}${key}: {\n${getNewTree(children, `${data}   `)}\n${data}}`;
       default:
         return `wrong data type - ${type}`;
     }

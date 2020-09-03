@@ -22,7 +22,7 @@ const getFileComparisons = (object1, object2) => {
       oldValue: object2[key],
     };
   });
-  console.log(JSON.stringify(compare, null, 2))
+  // console.log(JSON.stringify(compare, null, 2))
   return compare;
 };
 export default getFileComparisons;
