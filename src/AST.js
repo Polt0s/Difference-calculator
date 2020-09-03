@@ -1,7 +1,9 @@
 import _ from 'lodash';
 
 const getFileComparisons = (object1, object2) => {
-  const allKeys = _.union(Object.keys(object1), Object.keys(object2)).sort();
+  const file1 = Object.keys(object1);
+  const file2 = Object.keys(object2);
+  const allKeys = _.union(file1, file2).sort();
   const compare = allKeys.map((key) => {
     if (!_.has(object1, key)) {
       return { key, type: 'added', value: object2[key] };
@@ -22,7 +24,6 @@ const getFileComparisons = (object1, object2) => {
       oldValue: object2[key],
     };
   });
-  // console.log(JSON.stringify(compare, null, 2))
   return compare;
 };
 export default getFileComparisons;
