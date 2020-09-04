@@ -13,7 +13,7 @@ const getNewTree = (obj, data) => {
   const statusKeys = obj
     .map((tree) => {
       const {
-        key, type, value, oldValue, newValue, children
+        key, type, value, oldValue, newValue, children,
       } = tree;
       switch (type) {
         case 'added':

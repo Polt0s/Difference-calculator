@@ -7,7 +7,6 @@
 // // const __filename = url.fileURLToPath(import.meta.url);
 // // const __dirname = path.dirname(path.__filename);
 
-// const getFixturePath = (filename) => path.join(process.cwd(), '..', 'frontend-project-lvl2/__fixtures__', filename);
 // const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 // const formats = [
