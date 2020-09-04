@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import getNewTree from '../src/buildAST.js';
 
 const formatter = (data, format) => {
@@ -8,6 +7,6 @@ const formatter = (data, format) => {
     default:
       return null;
   }
-}
+};
 
 export default formatter;

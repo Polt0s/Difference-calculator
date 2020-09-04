@@ -12,6 +12,6 @@ const parsers = (config, format) => {
     default:
       return `format ${format} not found.`;
   }
-}
+};
 
 export default parsers;

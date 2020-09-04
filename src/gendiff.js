@@ -1,7 +1,7 @@
+import path from 'path';
 import getFileComparisons from './AST.js';
 import getWay from './readingFile.js';
-import parsers from './parsers.js'
-import path from 'path';
+import parsers from './parsers.js';
 import formatter from '../formatters/index.js';
 
 const getNewformat = (file) => {
