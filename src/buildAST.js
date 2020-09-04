@@ -12,7 +12,9 @@ const convertToString = (value, data) => {
 const getNewTree = (obj, data) => {
   const statusKeys = obj
     .map((tree) => {
-      const { key, type, value, oldValue, newValue, children } = tree;
+      const {
+        key, type, value, oldValue, newValue, children
+      } = tree;
       switch (type) {
         case 'added':
           return `${data}+ ${key}: ${convertToString(value, data)}`;

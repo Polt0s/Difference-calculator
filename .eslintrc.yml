@@ -4,7 +4,7 @@ plugins:
 extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
-  
+
 env:
   node: true
   jest: true
@@ -12,3 +12,4 @@ env:
 rules:
   no-console: 0
   import/extensions: 0
+  multiline: true
