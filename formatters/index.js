@@ -1,5 +1,5 @@
 import getNewTree from '../src/buildAST.js';
-import getFormatPlain from './plain.js'
+import getFormatPlain from './plain.js';
 
 const formatter = (data, format) => {
   switch (format) {

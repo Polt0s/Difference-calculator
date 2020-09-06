@@ -1,11 +1,11 @@
-import _ from 'lodash'
+import _ from 'lodash';
 
 const checkObject = (obj) => _.isPlainObject(obj);
 
 const getAllValue = (value) => {
   if (checkObject(value)) {
-    '[complex value]'
-  }
+    return '[complex value]';
+  };
   return value;
 };
 
@@ -21,14 +21,12 @@ const getFormatPlain = (obj, data = '') => {
       case 'nested':
         return getFormatPlain(tree.children);
       case 'changed':
-        return `Property '${data}${tree.key}' was updated. From ${getAllValue(tree.newValue)} to ${getAllValue(tree.oldValue)}`
+        return `Property '${data}${tree.key}' was updated. From ${getAllValue(tree.newValue)} to ${getAllValue(tree.oldValue)}`;
       default:
         return `${tree.type} - the value is wrong`;
     }
   });
   return output.join('\n');
-}
+};
 
 export default getFormatPlain;
-
-
