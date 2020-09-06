@@ -6,7 +6,11 @@ const convertToString = (value, data) => {
   }
   const newKeys = Object.keys(value);
   const searchKeys = newKeys.map((key) => `${key}: ${value[key]}`);
-  return `{\n${data}${searchKeys.join(' \n ')}\n${data}  }`;
+  if (_.isObject(value)) {
+    const newObj = searchKeys.join(' \n ');
+    return `{\n${data}${newObj}\n${data}  }`
+  }
+  return `wrong format - ${value}`;
 };
 
 const getNewTree = (obj, data) => {
