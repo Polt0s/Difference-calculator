@@ -8,7 +8,7 @@ const convertToString = (value, data) => {
   const searchKeys = newKeys.map((key) => `${key}: ${value[key]}`);
   if (_.isObject(value)) {
     const newObj = searchKeys.join(' \n ');
-    return `{\n${data}${newObj}\n${data}  }`
+    return `{\n${data}${newObj}\n${data}  }`;
   }
   return `wrong format - ${value}`;
 };

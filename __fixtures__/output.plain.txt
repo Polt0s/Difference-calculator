@@ -1,0 +1,14 @@
+Property 'follow' was added with value: false
+Property 'setting1' no change
+Property 'setting2' was removed
+Property 'setting3' was updated. From true to [complex value]
+Property 'setting4' was added with value: blah blah
+Property 'setting5' was added with value: [complex value]
+Property 'wow' was updated. From too much to so much
+Property 'key' no change
+Property 'ops' was added with value: vops
+Property 'baz' was updated. From bas to bars
+Property 'foo' no change
+Property 'nest' was updated. From [complex value] to str
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]

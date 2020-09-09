@@ -10,10 +10,10 @@ const getNewformat = (file) => {
   return parsers(newFormat, newWay);
 };
 
-const genDiff = (filepath1, filepath2, format) => {
+const gendiff = (filepath1, filepath2, format) => {
   const fileToPath1 = getNewformat(filepath1);
   const fileToPath2 = getNewformat(filepath2);
   const ast = getFileComparisons(fileToPath1, fileToPath2);
   return formatter(ast, format);
 };
-export default genDiff;
+export default gendiff;

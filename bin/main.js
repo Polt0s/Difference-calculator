@@ -1,5 +1,5 @@
 import program from 'commander';
-import genDiff from '../src/gendiff.js';
+import gendiff from '../src/gendiff.js';
 
 program.version('0.0.1');
 program.description('Compares two configuration files and shows a difference.');
@@ -11,7 +11,7 @@ if (typeof filepath1Value !== 'undefined' || typeof filepath2Value !== 'undefine
   process.exit(1);
 }
 program.action((filepath1, filepath2) => {
-  const output = genDiff(filepath1, filepath2, program.format);
+  const output = gendiff(filepath1, filepath2, program.format);
   console.log(output);
 });
 program.parse(process.argv);

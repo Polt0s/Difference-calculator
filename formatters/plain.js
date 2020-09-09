@@ -5,7 +5,7 @@ const checkObject = (obj) => _.isPlainObject(obj);
 const getAllValue = (value) => {
   if (checkObject(value)) {
     return '[complex value]';
-  };
+  }
   return value;
 };
 
