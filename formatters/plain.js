@@ -15,13 +15,13 @@ const getFormatPlain = (obj, data = '') => {
       case 'added':
         return `Property '${data}${tree.key}' was added with value: ${getAllValue(tree.value)}`;
       case 'delete':
-        return `Property '${data}${tree.key}' was removed`;
+        return `Property '${data}${tree.key}' was delete`;
       case 'unchanged':
-        return `Property '${data}${tree.key}' no change`;
+        return `Property '${data}${tree.key}' unchanged`;
       case 'nested':
-        return getFormatPlain(tree.children);
+        return getFormatPlain(tree.children, `${data}${tree.key}.`);
       case 'changed':
-        return `Property '${data}${tree.key}' was updated. From ${getAllValue(tree.newValue)} to ${getAllValue(tree.oldValue)}`;
+        return `Property '${data}${tree.key}' was changed from ${getAllValue(tree.newValue)} to ${getAllValue(tree.oldValue)}`;
       default:
         return `${tree.type} - the value is wrong`;
     }

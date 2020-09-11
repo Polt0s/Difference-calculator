@@ -4,10 +4,7 @@
     "setting2": 200,
     "setting3": true,
     "setting6": {
-      "key": "value",
-      "doge": {
-        "wow": "too much"
-      }
+      "key": "value"
     }
   },
   "group1": {
@@ -18,9 +15,6 @@
     }
   },
   "group2": {
-    "abc": 12345,
-    "deep": {
-      "id": 45
-    }
+    "abc": 12345
   }
 }

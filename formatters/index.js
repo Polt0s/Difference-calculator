@@ -4,7 +4,7 @@ import getFormatPlain from './plain.js';
 const formatter = (data, format) => {
   switch (format) {
     case 'stylish':
-      return getNewTree(data, '');
+      return getNewTree(data, '  ');
     case 'plain':
       return getFormatPlain(data);
     case 'json':
