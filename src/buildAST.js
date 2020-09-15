@@ -7,8 +7,7 @@ const convertToString = (value, data) => {
   const newKeys = Object.keys(value);
   const searchKeys = newKeys.map((key) => `      ${key}: ${value[key]}`);
   if (_.isObject(value)) {
-    const newObj = searchKeys.join(' \n ');
-    return `{\n${data}${newObj}\n${data}  }`;
+    return `{\n${data}${searchKeys}\n${data}  }`;
   }
   return `wrong format - ${value}`;
 };
@@ -29,14 +28,14 @@ const getNewTree = (obj, data) => {
         case 'changed':
           return [`${data}- ${key}: ${convertToString(newValue, data)}`, `${data}+ ${key}: ${convertToString(oldValue, data)}`];
         case 'nested':
-          return `  ${data}${key}: {\n${getNewTree(children, `${data}    `)}\n${data}  }`;
+          return `  ${data}${key}: ${getNewTree(children, `${data}    `)}${data}`;
         default:
           return `wrong data type - ${type}`;
       }
     })
     .flat();
   const output = statusKeys.join('\n');
-  return `{\n${output}\n}`
+  return `{\n${output}\n}`;
 };
 
 export default getNewTree;

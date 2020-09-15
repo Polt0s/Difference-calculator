@@ -8,8 +8,8 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 test.each([
   // ['json', 'output-json.json', 'json'],
-  // ['json', 'output-stylish.txt', 'stylish'],
-  ['json', 'output-plain.txt', 'plain'],
+  ['json', 'output-stylish.txt', 'stylish'],
+  // ['json', 'output-plain.txt', 'plain'],
 ])('gendiff(%#)', (isFile, expectedFile, format) => {
   const firstFile = getFixturePath(`filepath1.${isFile}`);
   const secondFile = getFixturePath(`filepath2.${isFile}`);
