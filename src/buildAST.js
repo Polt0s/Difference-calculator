@@ -6,7 +6,7 @@ const convertToString = (value, data) => {
   if (!_.isObject(value)) {
     return value;
   }
-  const newKeys = Object.keys(value)
+  const newKeys = Object.keys(value);
   const searchKeys = newKeys.map((key) => `    ${key}: ${value[key]}`);
   if (_.isObject(value)) {
     const output = ['{', searchKeys, '}'];
@@ -15,8 +15,8 @@ const convertToString = (value, data) => {
   return `wrong format - ${value}`;
 };
 
-const getNewTree = (tree, depth = 0) => {
-  const statusKeys = tree
+const getNewTree = (object, depth = 0) => {
+  const statusKeys = object
     .map((tree) => {
       const {
         key, type, value, oldValue, newValue, children,
