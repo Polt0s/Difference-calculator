@@ -27,7 +27,7 @@ const getNewTree = (object, depth = 0) => {
         case 'delete':
           return `  - ${key}: ${convertToString(value, depth + 1)}`;
         case 'unchanged':
-          return `    ${key}: ${convertToString(value, depth + 1)}`;
+          return `    ${key}: ${convertToString(value, depth)}`;
         case 'changed':
           return `  - ${key}: ${convertToString(newValue, depth + 1)}\n${indent(depth)}`
             + `  + ${key}: ${convertToString(oldValue, depth + 1)}`;
