@@ -15,7 +15,7 @@ const convertToString = (value, data) => {
   return `wrong format - ${value}`;
 };
 
-const getNewTree = (object, depth = 0) => {
+const formatStylish = (object, depth = 0) => {
   const statusKeys = object
     .map((tree) => {
       const {
@@ -24,7 +24,7 @@ const getNewTree = (object, depth = 0) => {
       switch (type) {
         case 'added':
           return `  + ${key}: ${convertToString(value, depth + 1)}`;
-        case 'delete':
+        case 'deleted':
           return `  - ${key}: ${convertToString(value, depth + 1)}`;
         case 'unchanged':
           return `    ${key}: ${convertToString(value, depth)}`;
@@ -32,9 +32,9 @@ const getNewTree = (object, depth = 0) => {
           return `  - ${key}: ${convertToString(newValue, depth + 1)}\n${indent(depth)}`
             + `  + ${key}: ${convertToString(oldValue, depth + 1)}`;
         case 'nested':
-          return `    ${key}: ${getNewTree(children, depth + 1)}`;
+          return `    ${key}: ${formatStylish(children, depth + 1)}`;
         default:
-          return `wrong data type - ${type}`;
+          throw new Error(`Unknown order state: '${type}'!`);
       }
     })
     .flat();
@@ -42,4 +42,4 @@ const getNewTree = (object, depth = 0) => {
   return output.join(`\n${indent(depth)}`);
 };
 
-export default getNewTree;
+export default formatStylish;

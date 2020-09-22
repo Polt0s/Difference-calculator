@@ -1,16 +1,16 @@
-import getNewTree from '../src/buildAST.js';
-import getFormatPlain from './plain.js';
+import formatStylish from './stylish.js';
+import formatPlain from './plain.js';
 
 const formatter = (data, format) => {
   switch (format) {
     case 'stylish':
-      return getNewTree(data);
+      return formatStylish(data);
     case 'plain':
-      return getFormatPlain(data);
+      return formatPlain(data);
     case 'json':
       return JSON.stringify(data);
     default:
-      return null;
+      throw new Error(`Unknown order state: '${format}'!`);
   }
 };
 

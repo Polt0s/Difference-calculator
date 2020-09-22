@@ -6,10 +6,6 @@ program.description('Compares two configuration files and shows a difference.');
 program.arguments('<filepath1> <filepath2>');
 program.helpOption('-h, --help', 'output usage information');
 program.option('-f, --format [type]', 'output format', 'stylish');
-if (typeof filepath1Value !== 'undefined' || typeof filepath2Value !== 'undefined') {
-  console.error('no command given!');
-  process.exit(1);
-}
 program.action((filepath1, filepath2) => {
   const output = gendiff(filepath1, filepath2, program.format);
   console.log(output);

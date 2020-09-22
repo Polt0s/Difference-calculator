@@ -9,7 +9,7 @@ const getFileComparisons = (object1, object2) => {
       return { key, type: 'added', value: object2[key] };
     }
     if (!_.has(object2, key)) {
-      return { key, type: 'delete', value: object1[key] };
+      return { key, type: 'deleted', value: object1[key] };
     }
     if (object1[key] === object2[key]) {
       return { key, type: 'unchanged', value: object1[key] };

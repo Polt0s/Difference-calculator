@@ -10,7 +10,7 @@ const parsers = (config, format) => {
     case '.ini':
       return ini.parse(config);
     default:
-      return `format ${format} not found.`;
+      throw new Error(`Unknown order state: '${format}'!`);
   }
 };
 
