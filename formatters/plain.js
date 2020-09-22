@@ -11,19 +11,22 @@ const formatValue = (value) => {
 
 const formatPlain = (obj, data = '') => {
   const output = obj.map((tree) => {
-    switch (tree.type) {
+    const {
+      key, type, value, oldValue, newValue, children,
+    } = tree;
+    switch (type) {
       case 'added':
-        return `Property '${data}${tree.key}' was added with value: ${formatValue(tree.value)}`;
+        return `Property '${data}${key}' was added with value: ${formatValue(value)}`;
       case 'deleted':
-        return `Property '${data}${tree.key}' was deleted`;
+        return `Property '${data}${key}' was deleted`;
       case 'unchanged':
-        return `Property '${data}${tree.key}' unchanged`;
+        return `Property '${data}${key}' unchanged`;
       case 'nested':
-        return formatPlain(tree.children, `${data}${tree.key}.`);
+        return formatPlain(children, `${data}${key}.`);
       case 'changed':
-        return `Property '${data}${tree.key}' was changed from ${formatValue(tree.newValue)} to ${formatValue(tree.oldValue)}`;
+        return `Property '${data}${key}' was changed from ${formatValue(newValue)} to ${formatValue(oldValue)}`;
       default:
-        throw new Error(`Unknown order state: '${tree.type}'!`);
+        throw new Error(`Unknown order state: '${type}'!`);
     }
   });
   return output.join('\n');

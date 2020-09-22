@@ -12,8 +12,8 @@ test.each([
   ['ini', 'Result-Format-Stylish.txt', 'stylish'],
   ['yaml', 'Result-Format-Stylish.txt', 'stylish'],
 ])('gendiff(%#)', (isFile, expectedFile, format) => {
-  const firstFile = getFixturePath(`filepath1.${isFile}`);
-  const secondFile = getFixturePath(`filepath2.${isFile}`);
+  const firstFile = getFixturePath(`BeginFile.${isFile}`);
+  const secondFile = getFixturePath(`EndFile.${isFile}`);
   const output = readFile(expectedFile);
   expect(gendiff(firstFile, secondFile, format)).toBe(output);
 });
