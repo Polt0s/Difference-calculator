@@ -22,7 +22,7 @@ const formatPlain = (obj, data = '') => {
       case 'unchanged':
         return `Property '${data}${key}' unchanged`;
       case 'nested':
-        return formatPlain(children, `${data}${key}.`);
+        return `${formatPlain(children, [`${data}${key}.`])}`;
       case 'changed':
         return `Property '${data}${key}' was changed from ${formatValue(newValue)} to ${formatValue(oldValue)}`;
       default:
