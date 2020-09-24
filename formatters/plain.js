@@ -9,27 +9,28 @@ const formatValue = (value) => {
   return value;
 };
 
-const formatPlain = (obj, data = '') => {
-  const output = obj.map((tree) => {
+const formatPlain = (ast) => {
+  const output = (node, parents) => {
     const {
       key, type, value, oldValue, newValue, children,
-    } = tree;
+    } = node;
     switch (type) {
       case 'added':
-        return `Property '${data}${key}' was added with value: ${formatValue(value)}`;
+        return [`Property '${[...parents, key].join('.')}' was added with value: ${formatValue(value)}`];
       case 'deleted':
-        return `Property '${data}${key}' was deleted`;
+        return [`Property '${[...parents, key].join('.')}' was deleted`];
       case 'unchanged':
-        return `Property '${data}${key}' unchanged`;
+        return [`Property '${[...parents, key].join('.')}' unchanged`];
       case 'nested':
-        return `${formatPlain(children, [`${data}${key}.`])}`;
+        return [...children.map((item) => output(item, [...parents, key]))].flat();
       case 'changed':
-        return `Property '${data}${key}' was changed from ${formatValue(newValue)} to ${formatValue(oldValue)}`;
+        return [`Property '${[...parents, key].join('.')}' was changed from ${formatValue(newValue)} to ${formatValue(oldValue)}`];
       default:
         throw new Error(`Unknown order state: '${type}'!`);
     }
-  });
-  return output.join('\n');
+  };
+  const result = ast.map((item) => output(item, [])).flat();
+  return result.join('\n');
 };
 
 export default formatPlain;
