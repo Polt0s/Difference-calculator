@@ -1,9 +1,7 @@
 import _ from 'lodash';
 
-const checkObject = (obj) => _.isPlainObject(obj);
-
 const formatValue = (value) => {
-  if (checkObject(value)) {
+  if (_.isPlainObject(value)) {
     return '[complex value]';
   }
   return value;
@@ -29,7 +27,7 @@ const formatPlain = (ast) => {
         throw new Error(`Unknown order state: '${type}'!`);
     }
   };
-  const result = ast.map((item) => output(item, [])).flat();
+  const result = ast.flatMap((item) => output(item, []));
   return result.join('\n');
 };
 

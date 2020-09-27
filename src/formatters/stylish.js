@@ -3,21 +3,18 @@ import _ from 'lodash';
 const indent = (depth, tab = '    ') => tab.repeat(depth);
 
 const convertToString = (value, data) => {
-  if (!_.isObject(value)) {
+  if (!_.isPlainObject(value)) {
     return value;
   }
   const newKeys = Object.keys(value);
-  const searchKeys = newKeys.map((key) => `    ${key}: ${value[key]}`);
-  if (_.isObject(value)) {
-    const output = ['{', searchKeys, '}'];
-    return output.join(`\n${indent(data)}`);
-  }
-  return `wrong format - ${value}`;
+  const searchKeys = newKeys.map((key) => `    ${key}: ${convertToString(value[key], data)}`);
+  const output = ['{', searchKeys, '}'];
+  return output.join(`\n${indent(data)}`);
 };
 
 const formatStylish = (object, depth = 0) => {
   const statusKeys = object
-    .map((tree) => {
+    .flatMap((tree) => {
       const {
         key, type, value, oldValue, newValue, children,
       } = tree;
@@ -37,7 +34,6 @@ const formatStylish = (object, depth = 0) => {
           throw new Error(`Unknown order state: '${type}'!`);
       }
     })
-    .flat();
   const output = ['{', ...statusKeys, '}'];
   return output.join(`\n${indent(depth)}`);
 };

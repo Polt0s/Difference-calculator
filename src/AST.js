@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-const getFileComparisons = (object1, object2) => {
-  const file1 = Object.keys(object1);
-  const file2 = Object.keys(object2);
-  const allKeys = _.union(file1, file2).sort();
-  const compare = allKeys.map((key) => {
+const buildAst = (object1, object2) => {
+  const theKeysOfTheFirstObject = Object.keys(object1);
+  const theKeysOfTheSecondObject = Object.keys(object2);
+  const allKeys = _.union(theKeysOfTheFirstObject, theKeysOfTheSecondObject).sort();
+  const diff = allKeys.map((key) => {
     if (!_.has(object1, key)) {
       return { key, type: 'added', value: object2[key] };
     }
@@ -15,7 +15,7 @@ const getFileComparisons = (object1, object2) => {
       return { key, type: 'unchanged', value: object1[key] };
     }
     if (_.isPlainObject(object1[key]) && _.isPlainObject(object2[key])) {
-      return { key, type: 'nested', children: getFileComparisons(object1[key], object2[key]) };
+      return { key, type: 'nested', children: buildAst(object1[key], object2[key]) };
     }
     return {
       key,
@@ -24,6 +24,6 @@ const getFileComparisons = (object1, object2) => {
       oldValue: object2[key],
     };
   });
-  return compare;
+  return diff;
 };
-export default getFileComparisons;
+export default buildAst;
