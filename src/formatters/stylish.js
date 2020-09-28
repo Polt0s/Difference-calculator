@@ -33,7 +33,7 @@ const formatStylish = (object, depth = 0) => {
         default:
           throw new Error(`Unknown order state: '${type}'!`);
       }
-    })
+    });
   const output = ['{', ...statusKeys, '}'];
   return output.join(`\n${indent(depth)}`);
 };

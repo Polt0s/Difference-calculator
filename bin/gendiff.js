@@ -1,5 +1,5 @@
 import program from 'commander';
-import gendiff from '../src/gendiff.js';
+import gendiff from '../src/index.js';
 
 program.version('0.0.1');
 program.description('Compares two configuration files and shows a difference.');
