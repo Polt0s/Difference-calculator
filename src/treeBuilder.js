@@ -1,9 +1,7 @@
 import _ from 'lodash';
 
 const buildAst = (object1, object2) => {
-  const theKeysOfTheFirstObject = Object.keys(object1);
-  const theKeysOfTheSecondObject = Object.keys(object2);
-  const allKeys = _.union(theKeysOfTheFirstObject, theKeysOfTheSecondObject).sort();
+  const allKeys = _.union(Object.keys(object1), Object.keys(object2)).sort();
   const diff = allKeys.map((key) => {
     if (!_.has(object1, key)) {
       return { key, type: 'added', value: object2[key] };

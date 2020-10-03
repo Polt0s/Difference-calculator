@@ -1,7 +1,7 @@
 import formatStylish from './stylish.js';
 import formatPlain from './plain.js';
 
-const getFormatter = (data, format) => {
+const getFormat = (data, format) => {
   switch (format) {
     case 'stylish':
       return formatStylish(data);
@@ -14,4 +14,4 @@ const getFormatter = (data, format) => {
   }
 };
 
-export default getFormatter;
+export default getFormat;
