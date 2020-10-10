@@ -27,9 +27,9 @@ const formatPlain = (ast) => {
         default:
           throw new Error(`Unknown order state: '${type}'!`);
       }
-    })
+    });
   const result = iter(ast, []);
-  return result.join('\n')
-}
+  return result.join('\n');
+};
 
 export default formatPlain;
