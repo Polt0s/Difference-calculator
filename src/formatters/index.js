@@ -1,8 +1,8 @@
 import formatStylish from './stylish.js';
 import formatPlain from './plain.js';
 
-const getFormat = (data, format) => {
-  switch (format) {
+const format = (data, type) => {
+  switch (type) {
     case 'stylish':
       return formatStylish(data);
     case 'plain':
@@ -10,8 +10,8 @@ const getFormat = (data, format) => {
     case 'json':
       return JSON.stringify(data);
     default:
-      throw new Error(`Unknown order state: '${format}'!`);
+      throw new Error(`Unknown order state: '${type}'!`);
   }
 };
 
-export default getFormat;
+export default format;

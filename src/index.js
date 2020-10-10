@@ -2,18 +2,18 @@ import path from 'path';
 import buildAst from './treeBuilder.js';
 import getFileContent from './readingFile.js';
 import parse from './parsers.js';
-import getFormat from './formatters/index.js';
+import format from './formatters/index.js';
 
 const getData = (filePath) => {
-  const newFormat = getFileContent(filePath);
-  const newWay = path.extname(filePath);
-  return parse(newFormat, newWay);
+  const contentFile = getFileContent(filePath);
+  const fileFormat = path.extname(filePath);
+  return parse(contentFile, fileFormat);
 };
 
-const gendiff = (filepath1, filepath2, format) => {
-  const fileToData1 = getData(filepath1);
-  const fileToData2 = getData(filepath2);
-  const ast = buildAst(fileToData1, fileToData2);
-  return getFormat(ast, format);
+const gendiff = (filepath1, filepath2, outputFormat) => {
+  const parseInputFile = getData(filepath1);
+  const parseOutputFile = getData(filepath2);
+  const ast = buildAst(parseInputFile, parseOutputFile);
+  return format(ast, outputFormat);
 };
 export default gendiff;
